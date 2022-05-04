@@ -99,7 +99,10 @@ public class Tester {
 		//test((op.operate(10, 0) == ?), "The answer should be ? ");
 		test((op.operate(5, 10) == 0.5), "The answer should be 0.5.");
 	}
-
+	/**
+	 * Checks the PowOp class.
+	 */
+	private static void testDivideOp() {
 
 		/**
 		 * Checks the StackCalculator class.
