@@ -125,11 +125,11 @@ public class Tester {
 	 * Checks the ExpTokenizer class.
 	 */
 	private static void testExpTokenizer(){
-		ExpTokenizer tokens = new ExpTokenizer("(2 + 4)");
-		test(tokens.nextElement().equals("("), "The string ( should be printed.");
-		test(tokens.nextElement().equals("2"), "The string 2 should be printed.");
-		test(tokens.nextElement().equals("+"), "The string + should be printed.");
-		test(tokens.countTokens() == 3,"The result should be 3" );
+		ExpTokenizer tokens = new ExpTokenizer("( 2 + 4 )");
+		test(tokens.nextElement().toString().equals("("), "The string ( should be printed.");
+		test(tokens.nextElement().toString().equals("2"), "The string 2 should be printed.");
+		test(tokens.nextElement().toString().equals("+"), "The string + should be printed.");
+		test(tokens.countTokens() == 2,"The result should be 3" );
 
 	}
 
