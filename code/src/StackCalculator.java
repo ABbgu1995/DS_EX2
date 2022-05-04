@@ -22,7 +22,7 @@ public class StackCalculator extends Calculator {
             else if(iteration_token instanceof BinaryOp){
                 while(
                         (!(primary_stack.isEmpty()) && (primary_stack.elements[primary_stack.size-1] instanceof BinaryOp)
-                        && (((BinaryOp) iteration_token).getPrecedence() >=
+                        && (((BinaryOp) iteration_token).getPrecedence() <=
                         ((BinaryOp) primary_stack.elements[primary_stack.size-1]).getPrecedence()))
                 )
                 {
