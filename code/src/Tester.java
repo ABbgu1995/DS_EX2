@@ -41,6 +41,7 @@ public class Tester {
 
 		//Calculators
 		testStackCalculator();
+		testTreeCalculator();
 		//...
 
 
@@ -152,19 +153,55 @@ public class Tester {
 		 */
 
 		private static void testStackCalculator () {
+			StackCalculator test_stack = new StackCalculator();
+			test(test_stack.infixToPostfix("2 * 2 ^ 2 + 5").equals("2.0 2.0 2.0 ^ * 5.0 +"), "The string should be: 2.0 2.0 2.0 ^ * 5.0 +");
+			test(test_stack.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2").equals("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +"), "The string should be: 4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +");
+			test(test_stack.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3").equals("6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +"), "The string should be: 6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +");
+			//System.out.println(s.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3"));
 
-			StackCalculator s=new StackCalculator();
-			test(s.infixToPostfix("2 * 2 ^ 2 + 5 ").equals("2.0 2.0 2.0 ^ * 5.0 +"),"The string should be - 2 2 2 ^ * 5 +");
-			test(s.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2 ").equals("4.0 2.0 2.0 2.0 2.0 ^ ^ * * 5.0 2.0 ^ +"),"The string should be - 4.0 2.0 2.0 2.0 2.0 ^ ^ * * 5 2 ^ +");
-			System.out.println(s.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2 "));
+			test(test_stack.evaluate("2.0 2.0 2.0 ^ * 5.0 +") == 13, "The expression result should be 13");
+			test(test_stack.evaluate("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +") == 153, "The expression result should be 153");
+			test(test_stack.evaluate("-6 2 * 4 3 * +") == 0, "The expression result should be 0");
+		}
+
+		private static void testTreeCalculator (){
+			// Define test tree
+			TreeCalculator test_tree1 = new TreeCalculator();
+			TreeCalculator test_tree2 = new TreeCalculator();
+			TreeCalculator test_tree3 = new TreeCalculator();
+			TreeCalculator test_tree4 = new TreeCalculator();
+			TreeCalculator test_tree5 = new TreeCalculator();
+
+			// Define test postfix strings
+			String test_postfix_1 = "2.0 2.0 2.0 ^ * 5.0 +";
+			String test_postfix_2 = "4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +";
+			String test_postfix_3 = "-6 2 * 4 3 * +";
+			String test_postfix_4 = "6.0 2.0 3.0 + - 3.0 8.0 2.0 / + * 2.0 ^ 3.0 +";
+			String test_postfix_5 = "13";
+
+			test(test_tree1.evaluate(test_postfix_1) == 13, "The expression result should be 13");
+			test(test_tree2.evaluate(test_postfix_2) == 153, "The expression result should be 153");
+			test(test_tree3.evaluate(test_postfix_3) == 0, "The expression result should be 0");
+			test(test_tree4.evaluate(test_postfix_4) == 52, "The expression result should be 52.0");
+			test(test_tree5.evaluate(test_postfix_5) == 13, "The expression result should be 5");
+
+			// test the getInfix method
+			test(test_tree1.getInfix().equals("(2.0 * (2.0 ^ 2.0)) + 5.0"), "The string should be: (2.0 * (2.0 ^ 2.0)) + 5.0");
+			test(test_tree2.getInfix().equals("((4.0 * 2.0) * ((2.0 ^ 2.0) ^ 2.0)) + (5.0 ^ 2.0)"), "The string should be: ((4.0 * 2.0) * ((2.0 ^ 2.0) ^ 2.0)) + (5.0 ^ 2.0)");
+			test(test_tree3.getInfix().equals("(-6.0 * 2.0) + (4.0 * 3.0)"), "The string should be: (-6.0 * 2.0) + (4.0 * 3.0)");
+			test(test_tree4.getInfix().equals("(((6.0 - (2.0 + 3.0)) * (3.0 + (8.0 / 2.0))) ^ 2.0) + 3.0"), "The string should be: (((6.0 - (2.0 + 3.0)) * (3.0 + (8.0 / 2.0))) ^ 2.0) + 3.0");
+			test(test_tree5.getInfix().equals("13.0"), "The string should be: 13.0");
+			System.out.println(test_tree5.getInfix());
+
+			}
 
 
 
-//			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
+//			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.7 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
 //			String postExp = pc.infixToPostfix("2 + 3");
 //			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
 //			System.out.println(pc.evaluate(postExp));
 //			double result = pc.evaluate(postExp);
 //			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
 		}
-	}
+
