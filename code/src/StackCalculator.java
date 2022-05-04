@@ -41,9 +41,23 @@ public class StackCalculator extends Calculator {
         return postfix_str.substring(1,postfix_str.length());
 
     }
+
     @Override
     public double evaluate(String expr) {
-        // expr Postfix format: "7 3 + 18 2"
-        return 0;
+        ExpTokenizer e_t_post=new ExpTokenizer(expr);
+        StackAsArray st2=new StackAsArray();
+        while (e_t_post.hasMoreElements()){
+            Object iter_token_2=e_t_post.nextElement();
+            if (iter_token_2 instanceof BinaryOp){
+                double right=((ValueToken)(st2.pop())).getValue();
+                double left=((ValueToken)(st2.pop())).getValue();
+                ValueToken result = new ValueToken(((BinaryOp) iter_token_2).operate(left,right));
+                st2.push(result);
+            }
+            else
+                st2.push(iter_token_2);
+
+        }
+        return ((ValueToken)st2.pop()).getValue();
     }
 }
