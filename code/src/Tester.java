@@ -38,7 +38,7 @@ public class Tester {
 		testStackCalculator();
 		//...
 
-//barak ha gever
+
 		// Notifying the user that the code have passed all tests. 
 		if (testPassed) {
 			System.out.println("All " + testNum + " tests passed!");
@@ -127,9 +127,15 @@ public class Tester {
 	private static void testExpTokenizer(){
 		ExpTokenizer tokens = new ExpTokenizer("( 2 + 4 )");
 		test(tokens.nextElement().toString().equals("("), "The string ( should be printed.");
-		test(tokens.nextElement().toString().equals("2"), "The string 2 should be printed.");
+		test(tokens.nextElement().toString().equals("2.0"), "The string 2 should be printed.");
 		test(tokens.nextElement().toString().equals("+"), "The string + should be printed.");
+		test(tokens.hasMoreElements(), "The string truee should be printed.");
+		tokens.nextElement();
+		tokens.nextElement();
+		test(tokens.hasMoreElements() == false, "The string true should be printed.");
+		// Check if there is build-in bug in countTokens()
 		test(tokens.countTokens() == 2,"The result should be 3" );
+
 
 	}
 
