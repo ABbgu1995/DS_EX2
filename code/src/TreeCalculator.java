@@ -29,7 +29,12 @@ public class TreeCalculator {
     }
 
     public String getInfix() {
-        String winner= recursiveGetInfix(node);
+        // add the if in case there is only one node.
+        // without the if statement, in case of one node and using the substring, the value return will cut the first number
+        // for example, without the if, one node with value of 13 return 3
+        if ((node.isLeaf()))
+            return recursiveGetInfix(node);
+        String winner = recursiveGetInfix(node);
         return winner.substring(1,winner.length()-1);
 
     }
