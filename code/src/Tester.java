@@ -17,24 +17,21 @@ public class Tester {
 		/* TODO - write a function for each class */
 		// Each function here should test a different class. You should test ExpTokenizer as well.
 
-		//BinaryOp
-		ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
-		StackCalculator new1 = new StackCalculator();
-		StackCalculator pc = new StackCalculator();
-		String postExp = pc.infixToPostfix("( -6 * 3 ) - ( -4 * 12 )");
-
-
-		TreeCalculator tr = new TreeCalculator();
-		System.out.println(tr.evaluate(postExp));
-		System.out.println(tr.getInfix());
-		System.out.println(tr.getPostfix());
-		System.out.println(tr.getPrefix());
+//		TreeCalculator tr = new TreeCalculator();
+//		System.out.println(tr.evaluate(postExp));
+//		System.out.println(tr.getInfix());
+//		System.out.println(tr.getPostfix());
+//		System.out.println(tr.getPrefix());
 
 
 		//BinaryOp
 		testAddOp();
 		testSubtractOp();
 		testDivideOp();
+		testMultiplyOp();
+		testPowOp();
+
+		testExpTokenizer();
 
 
 		//Calculators
@@ -102,19 +99,60 @@ public class Tester {
 	/**
 	 * Checks the PowOp class.
 	 */
-	private static void testDivideOp() {
+	private static void testPowOp() {
+		PowOp op = new PowOp();
+		test((op.toString().equals("^")), "The string ^ should be printed.");
+		test((op.operate(2, 3) == 8), "The answer should be 8 .");
+		test((op.operate(-2, 3) == -8), "The answer should be -8 ");
+		test((op.operate(0.5, 2) == 0.25), "The answer should be 0.25 .");
+		test((op.operate(-10, 2) == 100), "The answer should be 100 .");
+		test((op.operate(4, 0.5) == 2), "The answer should be 2.");
 
-		/**
+	}
+	/**
+	 * Checks the MultiplyOp class.
+	 */
+	private static void testMultiplyOp() {
+		MultiplyOp op = new MultiplyOp();
+		test((op.toString().equals("*")), "The string * should be printed.");
+		test((op.operate(2, 2) == 4), "The answer should be 4 .");
+		test((op.operate(13, 0) == 0), "The answer should be 0 ");
+		test((op.operate(13, 1) == 13), "The answer should be 13 .");
+		test((op.operate(-7, -1) == 7), "The answer should be 7 .");
+		test((op.operate(8, -0.5) == -4), "The answer should be -4.");
+	}
+	/**
+	 * Checks the ExpTokenizer class.
+	 */
+	private static void testExpTokenizer(){
+		ExpTokenizer tokens = new ExpTokenizer("(2 + 4)");
+		test(tokens.nextElement().equals("("), "The string ( should be printed.");
+		test(tokens.nextElement().equals("2"), "The string 2 should be printed.");
+		test(tokens.nextElement().equals("+"), "The string + should be printed.");
+		test(tokens.countTokens() == 3,"The result should be 3" );
+
+	}
+
+
+
+	/**
 		 * Checks the StackCalculator class.
 		 */
+
 		private static void testStackCalculator () {
 
-			StackCalculator pc = new StackCalculator();
-
-			String postExp = pc.infixToPostfix("2 + 3");
-			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
-			System.out.println(pc.evaluate(postExp));
-			double result = pc.evaluate(postExp);
-			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
+//			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
+//			StackCalculator new1 = new StackCalculator();
+//			StackCalculator pc = new StackCalculator();
+//			String postExp = pc.infixToPostfix("( -6 * 3 ) - ( -4 * 12 )");
+//
+//
+//			StackCalculator pc = new StackCalculator();
+//
+//			String postExp = pc.infixToPostfix("2 + 3");
+//			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
+//			System.out.println(pc.evaluate(postExp));
+//			double result = pc.evaluate(postExp);
+//			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
 		}
 	}
