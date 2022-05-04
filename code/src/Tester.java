@@ -30,9 +30,13 @@ public class Tester {
 		System.out.println(tr.getPostfix());
 		System.out.println(tr.getPrefix());
 
+
+		//BinaryOp
 		testAddOp();
-		// (6-(2+3) * 3+(8/2))^2+3
-		//...
+		testSubtractOp();
+		testDivideOp();
+
+
 		//Calculators
 		testStackCalculator();
 		//...
@@ -59,6 +63,7 @@ public class Tester {
 			System.out.println("Test " + testNum + " failed: " + msg);
 		}
 	}
+	// BinaryOps subclasses testers
 
 	/**
 	 * Checks the AddOp class.
@@ -69,18 +74,44 @@ public class Tester {
 		test((op.operate(1.0, 2.5) == 3.5), "The answer should be 3.5 .");
 	}
 
+	/**
+	 * Checks the SubtractOp class.
+	 */
+	private static void testSubtractOp() {
+		SubtractOp op = new SubtractOp();
+		test((op.toString().equals("-")), "The string - should be printed.");
+		test((op.operate(10, 7) == 3), "The answer should be 3.0 .");
+		test((op.operate(-10, 7.5) == -17.5), "The answer should be -17.5 .");
+		test((op.operate(10, -7.5) == 17.5), "The answer should be 17.5 .");
+		test((op.operate(10, -0) == 10), "The answer should be 10 .");
+		test((op.operate(0, -13) == 13), "The answer should be 13.");
+	}
 
 	/**
-	 * Checks the StackCalculator class.
+	 * Checks the DivideOp class.
 	 */
-	private static void testStackCalculator() {
-
-		StackCalculator pc = new StackCalculator();
-
-		String postExp = pc.infixToPostfix("2 + 3");
-		test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
-		System.out.println(pc.evaluate(postExp));
-		double result = pc.evaluate(postExp);
-		test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
+	private static void testDivideOp() {
+		DivideOp op = new DivideOp();
+		test((op.toString().equals("/")), "The string / should be printed.");
+		test((op.operate(6, 2) == 3), "The answer should be 3.0 .");
+		test((op.operate(-10, 5) == -2), "The answer should be -2 .");
+		test((op.operate(-10, -2) == 5), "The answer should be 5 .");
+		//test((op.operate(10, 0) == ?), "The answer should be ? ");
+		test((op.operate(5, 10) == 0.5), "The answer should be 0.5.");
 	}
-}
+
+
+		/**
+		 * Checks the StackCalculator class.
+		 */
+		private static void testStackCalculator () {
+
+			StackCalculator pc = new StackCalculator();
+
+			String postExp = pc.infixToPostfix("2 + 3");
+			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
+			System.out.println(pc.evaluate(postExp));
+			double result = pc.evaluate(postExp);
+			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
+		}
+	}

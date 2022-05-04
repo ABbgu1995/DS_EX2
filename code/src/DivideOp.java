@@ -5,8 +5,9 @@ public class DivideOp extends BinaryOp {
     }
 
     @Override
+    // divide by zero case
     public double operate(double left, double right) {
-        return left/right;
+        return left / right;
 
     }
 
