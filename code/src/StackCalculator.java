@@ -1,7 +1,7 @@
 public class StackCalculator extends Calculator {
 
 
-    public static String infixToPostfix(String expr){
+    public String infixToPostfix(String expr){
         // receives a valid infix expression, and returns a valid postfix expression
         // infix to postfix converter
         ExpTokenizer tokens = new ExpTokenizer(expr);
@@ -22,7 +22,7 @@ public class StackCalculator extends Calculator {
             else if(iteration_token instanceof BinaryOp){
                 while(
                         (!(primary_stack.isEmpty()) && (primary_stack.elements[primary_stack.size-1] instanceof BinaryOp)
-                        && (((BinaryOp) iteration_token).getPrecedence() <
+                        && (((BinaryOp) iteration_token).getPrecedence() >=
                         ((BinaryOp) primary_stack.elements[primary_stack.size-1]).getPrecedence()))
                 )
                 {
@@ -60,4 +60,5 @@ public class StackCalculator extends Calculator {
         }
         return ((ValueToken)st2.pop()).getValue();
     }
+
 }

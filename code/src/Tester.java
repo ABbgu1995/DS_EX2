@@ -25,6 +25,11 @@ public class Tester {
 
 
 		//BinaryOp
+		TreeCalculator t=new TreeCalculator();
+		t.evaluate("4 2 * 2 2 ^ 2 ^ * 5 2 ^ +");
+		System.out.println(t.getInfix());
+
+
 		testAddOp();
 		testSubtractOp();
 		testDivideOp();
@@ -129,12 +134,13 @@ public class Tester {
 		test(tokens.nextElement().toString().equals("("), "The string ( should be printed.");
 		test(tokens.nextElement().toString().equals("2.0"), "The string 2 should be printed.");
 		test(tokens.nextElement().toString().equals("+"), "The string + should be printed.");
-		test(tokens.hasMoreElements(), "The string truee should be printed.");
+		test(tokens.hasMoreElements(), "The string true should be printed.");
 		tokens.nextElement();
 		tokens.nextElement();
 		test(tokens.hasMoreElements() == false, "The string true should be printed.");
 		// Check if there is build-in bug in countTokens()
-		test(tokens.countTokens() == 2,"The result should be 3" );
+		//test(tokens.countTokens() == 2,"The result should be 3" );
+		test(tokens.hasMoreElements()==false,"");
 
 
 	}
@@ -147,14 +153,14 @@ public class Tester {
 
 		private static void testStackCalculator () {
 
+			StackCalculator s=new StackCalculator();
+			test(s.infixToPostfix("2 * 2 ^ 2 + 5 ").equals("2.0 2.0 2.0 ^ * 5.0 +"),"The string should be - 2 2 2 ^ * 5 +");
+			test(s.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2 ").equals("4.0 2.0 2.0 2.0 2.0 ^ ^ * * 5.0 2.0 ^ +"),"The string should be - 4.0 2.0 2.0 2.0 2.0 ^ ^ * * 5 2 ^ +");
+			System.out.println(s.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2 "));
+
+
+
 //			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
-//			StackCalculator new1 = new StackCalculator();
-//			StackCalculator pc = new StackCalculator();
-//			String postExp = pc.infixToPostfix("( -6 * 3 ) - ( -4 * 12 )");
-//
-//
-//			StackCalculator pc = new StackCalculator();
-//
 //			String postExp = pc.infixToPostfix("2 + 3");
 //			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
 //			System.out.println(pc.evaluate(postExp));

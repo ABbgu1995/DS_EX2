@@ -1,7 +1,7 @@
 public class AddOp extends BinaryOp {
     @Override
     public double getPrecedence() {
-        return 2;
+        return 0;
     }
 
     @Override

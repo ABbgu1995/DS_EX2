@@ -2,7 +2,7 @@ public class PowOp extends BinaryOp {
     @Override
     public double getPrecedence()
     {
-        return 0;
+        return 2;
     }
 
     @Override
