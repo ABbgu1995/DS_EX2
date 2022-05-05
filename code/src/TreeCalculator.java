@@ -74,7 +74,14 @@ public class TreeCalculator {
         return "";
     }
     public String getPrefix() {
-        return recursiveGetPrefix(node);
+        if ((node.isLeaf()))
+            return recursiveGetPrefix(node);
+        String winner = recursiveGetPrefix(node);
+        // without using the substring, the prefix output contains unnecessary space at the end of the string
+        // for example return "+ - * 6.0 2.0 * 4.0 3.0 " instead of "+ - * 6.0 2.0 * 4.0 3.0"
+        // So the substring cut the last space
+        return winner.substring(0,winner.length()-1);
+
 
 
     }
