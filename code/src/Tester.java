@@ -193,6 +193,7 @@ public class Tester {
 			test(test_tree5.getInfix().equals("13.0"), "The string should be: 13.0");
 			System.out.println(test_tree5.getInfix());
 
+
 			}
 
 
