@@ -195,7 +195,7 @@ public class Tester {
 			//test the getPrefix method
 			test(test_tree1.getPrefix().equals("+ * 2.0 ^ 2.0 2.0 5.0 "),"The string should be: + * 2.0 ^ 2.0 2.0 5.0");
 			test(test_tree2.getPrefix().equals("+ * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0 "),"The string should be: + * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0");
-			test(test_tree3.getPrefix().equals("+ - * 6.0 2.0 * 4.0 3.0 " ),"The string should be: + - * 6.0 2.0 * 4.0 3.0");
+			test(test_tree3.getPrefix().equals("+ * -6.0 2.0 * 4.0 3.0 " ),"The string should be: + - * 6.0 2.0 * 4.0 3.0");
 			System.out.println(test_tree3.getPrefix());
 
 

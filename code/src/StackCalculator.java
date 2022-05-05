@@ -1,6 +1,5 @@
 public class StackCalculator extends Calculator {
 
-
     public String infixToPostfix(String expr){
         // receives a valid infix expression, and returns a valid postfix expression
         // infix to postfix converter
