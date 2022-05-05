@@ -62,4 +62,4 @@ public class StackCalculator extends Calculator {
         return ((ValueToken)st2.pop()).getValue();
     }
 
-}
+}//barak

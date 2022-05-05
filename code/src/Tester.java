@@ -193,16 +193,12 @@ public class Tester {
 			test(test_tree5.getInfix().equals("13.0"), "The string should be: 13.0");
 
 			//test the getPrefix method
-			test(test_tree1.getPrefix().equals("+ * 2.0 ^ 2.0 2.0 5.0"),"The string should be: + * 2.0 ^ 2.0 2.0 5.0");
+			test(test_tree1.getPrefix().equals("+ * 2.0 ^ 2.0 2.0 5.0 "),"The string should be: + * 2.0 ^ 2.0 2.0 5.0");
 			test(test_tree2.getPrefix().equals("+ * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0"),"The string should be: + * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0");
 			test(test_tree3.getPrefix().equals("+ * -6.0 2.0 * 4.0 3.0" ),"The string should be: + * -6.0 2.0 * 4.0 3.0");
 			test(test_tree4.getPrefix().equals("+ ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0"),"The string should be: + ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0 ");
 			test(test_tree5.getPrefix().equals("13.0 "),"The string should be: 13.0");
 			System.out.println(test_tree5.getPrefix());
-
-
-
-
 			}
 
 
@@ -213,5 +209,5 @@ public class Tester {
 //			System.out.println(pc.evaluate(postExp));
 //			double result = pc.evaluate(postExp);
 //			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
-		}
+		}//barak
 
