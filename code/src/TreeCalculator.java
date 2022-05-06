@@ -7,7 +7,8 @@ public class TreeCalculator {
         ExpressionTree evaluate_tree = new ExpressionTree();
         evaluate_tree.BuildExpressionTree(expr);
         node = evaluate_tree.tree_root;
-        return evaluateExpression(evaluate_tree.tree_root);
+        //rote node instead evaluate_tree.tree_root
+        return evaluateExpression(node);
     }
 
     private double evaluateExpression(TreeNode node) {
