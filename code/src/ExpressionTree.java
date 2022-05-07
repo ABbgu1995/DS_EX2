@@ -3,6 +3,10 @@ import com.sun.source.tree.Tree;
 public class ExpressionTree {
     protected TreeNode tree_root;
 
+    /**
+     * Build an expression tree based on postfix expression from the tree_root as the root of the expression tree
+     * @param postfixExp postfix format of an expression
+     */
     public void BuildExpressionTree (String postfixExp){
         ExpTokenizer tokens = new ExpTokenizer(postfixExp);
         StackAsArray primary_stack= new StackAsArray();
@@ -20,5 +24,5 @@ public class ExpressionTree {
             }
         }
         tree_root = (TreeNode) primary_stack.pop();
-    }//amit
+    }
 }
