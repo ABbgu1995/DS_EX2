@@ -65,7 +65,9 @@ public class TreeCalculator {
             if (node.isLeaf()) {
                 return str;
             }
+
             return "("+ left + " " + str + " " + right + ")";
+
         }
         return "";
     }
@@ -75,9 +77,8 @@ public class TreeCalculator {
      */
 
     public String getPostfix() {
-        // The bug with extra space at the end of the string happens also for one node, @barak
         if ((node.isLeaf()))
-            return recursiveGetPostfix(node).substring(0,recursiveGetPostfix(node).length()-1);;
+            return recursiveGetPostfix(node);
         String postfix_expression = recursiveGetPostfix(node);
         return postfix_expression.substring(0,postfix_expression.length()-1);
 
@@ -107,8 +108,7 @@ public class TreeCalculator {
 
     public String getPrefix() {
         if ((node.isLeaf()))
-            // The bug with extra space at the end of the string happens also for one node, @barak
-            return recursiveGetPrefix(node).substring(0,recursiveGetPrefix(node).length()-1);
+            return recursiveGetPrefix(node);
         String prefix_expression = recursiveGetPrefix(node);
         // without using the substring, the prefix output contains unnecessary space at the end of the string
         // for example return "+ - * 6.0 2.0 * 4.0 3.0 " instead of "+ - * 6.0 2.0 * 4.0 3.0"
@@ -130,6 +130,7 @@ public class TreeCalculator {
             String left = recursiveGetPrefix(node.getLeft());
             String right = recursiveGetPrefix(node.getRight());
             return str + left + right;
+
         }
         return "";
     }

@@ -25,9 +25,8 @@ public class Tester {
 
 
 		//BinaryOp
-		TreeCalculator t=new TreeCalculator();
-		t.evaluate("4 2 * 2 2 ^ 2 ^ * 5 2 ^ +");
-		System.out.println(t.getInfix());
+
+
 
 
 		testAddOp();
@@ -138,10 +137,10 @@ public class Tester {
 		test(tokens.hasMoreElements(), "The string true should be printed.");
 		tokens.nextElement();
 		tokens.nextElement();
-		test(tokens.hasMoreElements() == false, "The string true should be printed.");
+		test(tokens.hasMoreElements() == false, "The string false should be printed.");
 		// Check if there is build-in bug in countTokens()
 		//test(tokens.countTokens() == 2,"The result should be 3" );
-		test(tokens.hasMoreElements()==false,"");
+
 
 
 	}
@@ -157,7 +156,6 @@ public class Tester {
 			test(test_stack.infixToPostfix("2 * 2 ^ 2 + 5").equals("2.0 2.0 2.0 ^ * 5.0 +"), "The string should be: 2.0 2.0 2.0 ^ * 5.0 +");
 			test(test_stack.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2").equals("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +"), "The string should be: 4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +");
 			test(test_stack.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3").equals("6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +"), "The string should be: 6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +");
-			//System.out.println(s.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3"));
 
 			test(test_stack.evaluate("2.0 2.0 2.0 ^ * 5.0 +") == 13, "The expression result should be 13");
 			test(test_stack.evaluate("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +") == 153, "The expression result should be 153");
@@ -179,6 +177,7 @@ public class Tester {
 			String test_postfix_4 = "6.0 2.0 3.0 + - 3.0 8.0 2.0 / + * 2.0 ^ 3.0 +";
 			String test_postfix_5 = "13";
 
+			//test the evaluate method
 			test(test_tree1.evaluate(test_postfix_1) == 13, "The expression result should be 13");
 			test(test_tree2.evaluate(test_postfix_2) == 153, "The expression result should be 153");
 			test(test_tree3.evaluate(test_postfix_3) == 0, "The expression result should be 0");
@@ -193,13 +192,24 @@ public class Tester {
 			test(test_tree5.getInfix().equals("13.0"), "The string should be: 13.0");
 
 			//test the getPrefix method
-			test(test_tree1.getPrefix().equals("+ * 2.0 ^ 2.0 2.0 5.0 "),"The string should be: + * 2.0 ^ 2.0 2.0 5.0");
+			test(test_tree1.getPrefix().equals("+ * 2.0 ^ 2.0 2.0 5.0"),"The string should be: + * 2.0 ^ 2.0 2.0 5.0");
 			test(test_tree2.getPrefix().equals("+ * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0"),"The string should be: + * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0");
 			test(test_tree3.getPrefix().equals("+ * -6.0 2.0 * 4.0 3.0" ),"The string should be: + * -6.0 2.0 * 4.0 3.0");
 			test(test_tree4.getPrefix().equals("+ ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0"),"The string should be: + ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0 ");
 			test(test_tree5.getPrefix().equals("13.0 "),"The string should be: 13.0");
-			System.out.println(test_tree5.getPrefix());
+
+
+			//test the getPostfix method
+			test(test_tree1.getPostfix().equals("2.0 2.0 2.0 ^ * 5.0 +"),"The string should be: 2.0 2.0 2.0 ^ * 5.0 +");
+			test(test_tree2.getPostfix().equals("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +"),"The string should be:4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +");
+			test(test_tree3.getPostfix().equals("-6.0 2.0 * 4.0 3.0 * +"),"The string should be: -6 2 * 4 3 * + ");
+			test(test_tree4.getPostfix().equals("6.0 2.0 3.0 + - 3.0 8.0 2.0 / + * 2.0 ^ 3.0 +"),"The string should be: 6.0 2.0 3.0 + - 3.0 8.0 2.0 / + * 2.0 ^ 3.0 + ");
+			test(test_tree5.getPostfix().equals("13.0"),"The string should be: 13.0");
+
 			}
+
+
+
 
 
 
