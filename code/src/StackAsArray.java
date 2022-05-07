@@ -58,6 +58,4 @@ public class StackAsArray implements Stack {
 		// Replace the elements array with the new one
 		elements = tmpArray;
 	}
-	
-
 }

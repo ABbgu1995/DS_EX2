@@ -25,16 +25,12 @@ public class TreeCalculator {
     private double evaluateExpression(TreeNode node) {
 
         double result;
-
         if (node.getData() instanceof BinaryOp) {
-
             double operand1 = evaluateExpression(node.getLeft());
             double operand2 = evaluateExpression(node.getRight());
             result = ((BinaryOp) node.getData()).operate(operand1, operand2);
-
         } else
             result = ((ValueToken) node.getData()).getValue();
-
         return result;
     }
 
@@ -66,7 +62,6 @@ public class TreeCalculator {
                 return str;
             }
             return "("+ left + " " + str + " " + right + ")";
-
         }
         return "";
     }
