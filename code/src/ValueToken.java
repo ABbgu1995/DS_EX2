@@ -26,4 +26,4 @@ public class ValueToken extends CalcToken {
         // Check another casting option
         return String.valueOf(val);
     }
-}//amit
+}
