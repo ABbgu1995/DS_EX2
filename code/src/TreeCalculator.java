@@ -65,7 +65,6 @@ public class TreeCalculator {
             if (node.isLeaf()) {
                 return str;
             }
-
             return "("+ left + " " + str + " " + right + ")";
 
         }
@@ -78,12 +77,9 @@ public class TreeCalculator {
 
     public String getPostfix() {
         if ((node.isLeaf()))
-            return recursiveGetPostfix(node);
+            return recursiveGetPostfix(node).substring(0,recursiveGetPostfix(node).length()-1);
         String postfix_expression = recursiveGetPostfix(node);
         return postfix_expression.substring(0,postfix_expression.length()-1);
-
-
-
     }
 
     /** calculate the postfix format of an expression tree using recursion.
@@ -108,15 +104,12 @@ public class TreeCalculator {
 
     public String getPrefix() {
         if ((node.isLeaf()))
-            return recursiveGetPrefix(node);
+            return recursiveGetPrefix(node).substring(0,recursiveGetPrefix(node).length()-1);
         String prefix_expression = recursiveGetPrefix(node);
         // without using the substring, the prefix output contains unnecessary space at the end of the string
         // for example return "+ - * 6.0 2.0 * 4.0 3.0 " instead of "+ - * 6.0 2.0 * 4.0 3.0"
         // So the substring cut the last space
         return prefix_expression.substring(0,prefix_expression.length()-1);
-
-
-
     }
 
     /** calculate the prefix format of an expression tree using recursion.
@@ -130,7 +123,6 @@ public class TreeCalculator {
             String left = recursiveGetPrefix(node.getLeft());
             String right = recursiveGetPrefix(node.getRight());
             return str + left + right;
-
         }
         return "";
     }

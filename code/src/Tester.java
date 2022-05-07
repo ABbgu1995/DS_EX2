@@ -207,17 +207,6 @@ public class Tester {
 			test(test_tree5.getPostfix().equals("13.0"),"The string should be: 13.0");
 
 			}
-
-
-
-
-
-
-//			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.7 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
-//			String postExp = pc.infixToPostfix("2 + 3");
-//			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
-//			System.out.println(pc.evaluate(postExp));
-//			double result = pc.evaluate(postExp);
-//			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
+			
 		}//barak
 
