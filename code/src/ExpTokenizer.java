@@ -32,7 +32,6 @@ public class ExpTokenizer  {
 		else if (token.equals("("))
 			resultToken =  new OpenBracket();
 
-			// TODO: Fill the rest of the token cases by yourself
 			
 		else // if the token is none of the above, it has to be a number. therefore, we would create valueToken.
 			resultToken = new ValueToken(Double.parseDouble(token));			

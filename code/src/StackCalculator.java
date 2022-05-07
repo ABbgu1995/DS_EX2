@@ -1,5 +1,12 @@
+/**
+ * the class calculate infix expression
+ */
 public class StackCalculator extends Calculator {
-
+    /**
+     * infixToPostfix-get infix expression and convert it to postfix
+     * @param expr-infix expression
+     * @return- string of postfix expression
+     */
     public String infixToPostfix(String expr){
         // receives a valid infix expression, and returns a valid postfix expression
         // infix to postfix converter
@@ -43,7 +50,13 @@ public class StackCalculator extends Calculator {
 
     }
 
+    /**
+     * evaluate-Override Calculator method- calculate postfix expression
+     * @param expr-postfix expression
+     * @return the result (numerical value) of the expression
+     */
     @Override
+
     public double evaluate(String expr) {
         ExpTokenizer e_t_post=new ExpTokenizer(expr);
         StackAsArray st2=new StackAsArray();

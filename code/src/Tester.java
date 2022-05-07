@@ -14,7 +14,21 @@ public class Tester {
 	 */
 	public static void main(String[] args) {
 
+		/* TODO - write a function for each class */
+		// Each function here should test a different class. You should test ExpTokenizer as well.
+
+//		TreeCalculator tr = new TreeCalculator();
+//		System.out.println(tr.evaluate(postExp));
+//		System.out.println(tr.getInfix());
+//		System.out.println(tr.getPostfix());
+//		System.out.println(tr.getPrefix());
+
+
 		//BinaryOp
+
+
+
+
 		testAddOp();
 		testSubtractOp();
 		testDivideOp();
@@ -36,104 +50,104 @@ public class Tester {
 		}
 	}
 
-		/**
-		 * This utility function will count the number of times it was invoked.
-		 * In addition, if a test fails the function will print the error message.
-		 *
-		 * @param exp The actual test condition
-		 * @param msg An error message, will be printed to the screen in case the test fails.
-		 */
-		private static void test(boolean exp, String msg) {
-			testNum++;
+	/**
+	 * This utility function will count the number of times it was invoked.
+	 * In addition, if a test fails the function will print the error message.
+	 *
+	 * @param exp The actual test condition
+	 * @param msg An error message, will be printed to the screen in case the test fails.
+	 */
+	private static void test(boolean exp, String msg) {
+		testNum++;
 
-			if (!exp) {
-				testPassed = false;
-				System.out.println("Test " + testNum + " failed: " + msg);
-			}
+		if (!exp) {
+			testPassed = false;
+			System.out.println("Test " + testNum + " failed: " + msg);
 		}
-		// BinaryOps subclasses testers
+	}
+	// BinaryOps subclasses testers
 
-		/**
-		 * Checks the AddOp class.
-		 */
-		private static void testAddOp() {
-			AddOp addop = new AddOp();
-			test((addop.toString().equals("+")), "The string + should be printed.");
-			test((addop.operate(1.0, 2.5) == 3.5), "The answer should be 3.5 .");
-			test((addop.operate(4.0, -6)) == -2.0 , "The answer should be: -2.0");
-			test((addop.operate(-4, 6.0)) == 2.0 , "The answer should be: -2.0");
-			test((addop.operate(-4.0, -6.0)) == -10.0 , "The answer should be: -10.0");
-			test((addop.operate(5.7, 1.2)) == 6.9 , "The answer should be: 6.9");
-		}
+	/**
+	 * Checks the AddOp class.
+	 */
+	private static void testAddOp() {
+		AddOp op = new AddOp();
+		test((op.toString().equals("+")), "The string + should be printed.");
+		test((op.operate(1.0, 2.5) == 3.5), "The answer should be 3.5 .");
+	}
 
-		/**
-		 * Checks the SubtractOp class.
-		 */
-		private static void testSubtractOp() {
-			SubtractOp op = new SubtractOp();
-			test((op.toString().equals("-")), "The string - should be printed.");
-			test((op.operate(10, 7) == 3), "The answer should be 3.0 .");
-			test((op.operate(-10, 7.5) == -17.5), "The answer should be -17.5 .");
-			test((op.operate(10, -7.5) == 17.5), "The answer should be 17.5 .");
-			test((op.operate(10, -0) == 10), "The answer should be 10 .");
-			test((op.operate(0, -13) == 13), "The answer should be 13.");
-		}
+	/**
+	 * Checks the SubtractOp class.
+	 */
+	private static void testSubtractOp() {
+		SubtractOp op = new SubtractOp();
+		test((op.toString().equals("-")), "The string - should be printed.");
+		test((op.operate(10, 7) == 3), "The answer should be 3.0 .");
+		test((op.operate(-10, 7.5) == -17.5), "The answer should be -17.5 .");
+		test((op.operate(10, -7.5) == 17.5), "The answer should be 17.5 .");
+		test((op.operate(10, -0) == 10), "The answer should be 10 .");
+		test((op.operate(0, -13) == 13), "The answer should be 13.");
+	}
 
-		/**
-		 * Checks the DivideOp class.
-		 */
-		private static void testDivideOp() {
-			DivideOp op = new DivideOp();
-			test((op.toString().equals("/")), "The string / should be printed.");
-			test((op.operate(6, 2) == 3), "The answer should be 3.0 .");
-			test((op.operate(-10, 5) == -2), "The answer should be -2 .");
-			test((op.operate(-10, -2) == 5), "The answer should be 5 .");
-			test((op.operate(5, 10) == 0.5), "The answer should be 0.5.");
-			//test((op.operate(10, 0) == ?), "The answer should be ? "); @barak
-		}
-		/**
-		 * Checks the PowOp class.
-		 */
-		private static void testPowOp() {
-			PowOp op = new PowOp();
-			test((op.toString().equals("^")), "The string ^ should be printed.");
-			test((op.operate(2, 3) == 8), "The answer should be 8 .");
-			test((op.operate(-2, 3) == -8), "The answer should be -8 ");
-			test((op.operate(0.5, 2) == 0.25), "The answer should be 0.25 .");
-			test((op.operate(-10, 2) == 100), "The answer should be 100 .");
-			test((op.operate(4, 0.5) == 2), "The answer should be 2.");
-		}
+	/**
+	 * Checks the DivideOp class.
+	 */
+	private static void testDivideOp() {
+		DivideOp op = new DivideOp();
+		test((op.toString().equals("/")), "The string / should be printed.");
+		test((op.operate(6, 2) == 3), "The answer should be 3.0 .");
+		test((op.operate(-10, 5) == -2), "The answer should be -2 .");
+		test((op.operate(-10, -2) == 5), "The answer should be 5 .");
+		//test((op.operate(10, 0) == ?), "The answer should be ? ");
+		test((op.operate(5, 10) == 0.5), "The answer should be 0.5.");
+	}
+	/**
+	 * Checks the PowOp class.
+	 */
+	private static void testPowOp() {
+		PowOp op = new PowOp();
+		test((op.toString().equals("^")), "The string ^ should be printed.");
+		test((op.operate(2, 3) == 8), "The answer should be 8 .");
+		test((op.operate(-2, 3) == -8), "The answer should be -8 ");
+		test((op.operate(0.5, 2) == 0.25), "The answer should be 0.25 .");
+		test((op.operate(-10, 2) == 100), "The answer should be 100 .");
+		test((op.operate(4, 0.5) == 2), "The answer should be 2.");
 
-		/**
-		 * Checks the MultiplyOp class.
-		 */
-		private static void testMultiplyOp() {
-			MultiplyOp op = new MultiplyOp();
-			test((op.toString().equals("*")), "The string * should be printed.");
-			test((op.operate(2, 2) == 4), "The answer should be 4 .");
-			test((op.operate(13, 0) == 0), "The answer should be 0 ");
-			test((op.operate(13, 1) == 13), "The answer should be 13 .");
-			test((op.operate(-7, -1) == 7), "The answer should be 7 .");
-			test((op.operate(8, -0.5) == -4), "The answer should be -4.");
-		}
+	}
+	/**
+	 * Checks the MultiplyOp class.
+	 */
+	private static void testMultiplyOp() {
+		MultiplyOp op = new MultiplyOp();
+		test((op.toString().equals("*")), "The string * should be printed.");
+		test((op.operate(2, 2) == 4), "The answer should be 4 .");
+		test((op.operate(13, 0) == 0), "The answer should be 0 ");
+		test((op.operate(13, 1) == 13), "The answer should be 13 .");
+		test((op.operate(-7, -1) == 7), "The answer should be 7 .");
+		test((op.operate(8, -0.5) == -4), "The answer should be -4.");
+	}
+	/**
+	 * Checks the ExpTokenizer class.
+	 */
+	private static void testExpTokenizer(){
+		ExpTokenizer tokens = new ExpTokenizer("( 2 + 4 )");
+		test(tokens.nextElement().toString().equals("("), "The string ( should be printed.");
+		test(tokens.nextElement().toString().equals("2.0"), "The string 2 should be printed.");
+		test(tokens.nextElement().toString().equals("+"), "The string + should be printed.");
+		test(tokens.hasMoreElements(), "The string true should be printed.");
+		tokens.nextElement();
+		tokens.nextElement();
+		test(tokens.hasMoreElements() == false, "The string false should be printed.");
+		// Check if there is build-in bug in countTokens()
+		//test(tokens.countTokens() == 2,"The result should be 3" );
 
-		/**
-		 * Checks the ExpTokenizer class.
-		 */
-		private static void testExpTokenizer(){
-			ExpTokenizer tokens = new ExpTokenizer("( 2 + 4 )");
-			test(tokens.nextElement().toString().equals("("), "The string ( should be printed.");
-			test(tokens.nextElement().toString().equals("2.0"), "The string 2 should be printed.");
-			test(tokens.nextElement().toString().equals("+"), "The string + should be printed.");
-			test(tokens.hasMoreElements(), "The string true should be printed.");
-			tokens.nextElement();
-			tokens.nextElement();
-			test(tokens.hasMoreElements() == false, "The string false should be printed.");
-			// Check if there is build-in bug in countTokens()
-			//test(tokens.countTokens() == 2,"The result should be 3" );
-		}
 
-		/**
+
+	}
+
+
+
+	/**
 		 * Checks the StackCalculator class.
 		 */
 
@@ -142,8 +156,6 @@ public class Tester {
 			test(test_stack.infixToPostfix("2 * 2 ^ 2 + 5").equals("2.0 2.0 2.0 ^ * 5.0 +"), "The string should be: 2.0 2.0 2.0 ^ * 5.0 +");
 			test(test_stack.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2").equals("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +"), "The string should be: 4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +");
 			test(test_stack.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3").equals("6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +"), "The string should be: 6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +");
-			test(test_stack.infixToPostfix("1 + 2 - 3 * 4 / 5 ^ 2").equals("1.0 2.0 + 3.0 4.0 * 5.0 2.0 ^ / -"), "The string should be: 1.0 2.0 + 3.0 4.0 * 5.0 2.0 ^ / -");
-			test(test_stack.infixToPostfix("( ( ( ( 3 - 1 ) * ( 4 - 2 ) ) / 2 ) + 3 )").equals("3.0 1.0 - 4.0 2.0 - * 2.0 / 3.0 +"), "The string should be: 3.0 1.0 - 4.0 2.0 - * 2.0 / 3.0 +");
 
 			test(test_stack.evaluate("2.0 2.0 2.0 ^ * 5.0 +") == 13, "The expression result should be 13");
 			test(test_stack.evaluate("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +") == 153, "The expression result should be 153");
@@ -196,5 +208,16 @@ public class Tester {
 
 			}
 
+
+
+
+
+
+//			ExpTokenizer check = new ExpTokenizer("( ( 6 - ( 2 + 3.7 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3");
+//			String postExp = pc.infixToPostfix("2 + 3");
+//			test(postExp.equals("2.0 3.0 +"), "The output of \"2 3 -\" should be  2.0 3.0 +");
+//			System.out.println(pc.evaluate(postExp));
+//			double result = pc.evaluate(postExp);
+//			test(result == 5.0, "The output of \"2 3 -\" should be 5.0");
 		}//barak
 
