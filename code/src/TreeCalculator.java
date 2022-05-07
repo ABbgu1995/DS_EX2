@@ -93,7 +93,6 @@ public class TreeCalculator {
             String right = recursiveGetPostfix(node.getRight());
             String str = node.getData().toString() + " ";
             return left + right + str;
-
         }
         return "";
     }
