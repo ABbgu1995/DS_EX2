@@ -52,5 +52,4 @@ public class TreeNode {
 	public boolean isLeaf(){
 		return (this.left == null) && (this.right == null);
 	}
-
 }
