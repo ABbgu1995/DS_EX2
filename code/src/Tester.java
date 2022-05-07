@@ -88,8 +88,8 @@ public class Tester {
 			test((op.operate(6, 2) == 3), "The answer should be 3.0 .");
 			test((op.operate(-10, 5) == -2), "The answer should be -2 .");
 			test((op.operate(-10, -2) == 5), "The answer should be 5 .");
-			//test((op.operate(10, 0) == ?), "The answer should be ? ");
 			test((op.operate(5, 10) == 0.5), "The answer should be 0.5.");
+			//test((op.operate(10, 0) == ?), "The answer should be ? "); @barak
 		}
 		/**
 		 * Checks the PowOp class.
@@ -142,6 +142,8 @@ public class Tester {
 			test(test_stack.infixToPostfix("2 * 2 ^ 2 + 5").equals("2.0 2.0 2.0 ^ * 5.0 +"), "The string should be: 2.0 2.0 2.0 ^ * 5.0 +");
 			test(test_stack.infixToPostfix("4 * 2 * 2 ^ 2 ^ 2 + 5 ^ 2").equals("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +"), "The string should be: 4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +");
 			test(test_stack.infixToPostfix("( ( 6 - ( 2 + 3.6 ) * 3 + ( 87.6 / 2 ) ) ^ 2 ) + 3").equals("6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +"), "The string should be: 6.0 2.0 3.6 + 3.0 * - 87.6 2.0 / + 2.0 ^ 3.0 +");
+			test(test_stack.infixToPostfix("1 + 2 - 3 * 4 / 5 ^ 2").equals("1.0 2.0 + 3.0 4.0 * 5.0 2.0 ^ / -"), "The string should be: 1.0 2.0 + 3.0 4.0 * 5.0 2.0 ^ / -");
+			test(test_stack.infixToPostfix("( ( ( ( 3 - 1 ) * ( 4 - 2 ) ) / 2 ) + 3 )").equals("3.0 1.0 - 4.0 2.0 - * 2.0 / 3.0 +"), "The string should be: 3.0 1.0 - 4.0 2.0 - * 2.0 / 3.0 +");
 
 			test(test_stack.evaluate("2.0 2.0 2.0 ^ * 5.0 +") == 13, "The expression result should be 13");
 			test(test_stack.evaluate("4.0 2.0 * 2.0 2.0 ^ 2.0 ^ * 5.0 2.0 ^ +") == 153, "The expression result should be 153");
