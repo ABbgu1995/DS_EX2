@@ -58,10 +58,7 @@ public class TreeCalculator {
 
     }
     public String getPostfix() {
-        if ((node.isLeaf()))
-            return recursiveGetInfix(node);
-        String winner = recursiveGetPostfix(node);
-        return winner.substring(0,winner.length()-1);
+        return recursiveGetPostfix(node);
 
 
     }
