@@ -196,7 +196,7 @@ public class Tester {
 			test(test_tree2.getPrefix().equals("+ * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0"),"The string should be: + * * 4.0 2.0 ^ ^ 2.0 2.0 2.0 ^ 5.0 2.0");
 			test(test_tree3.getPrefix().equals("+ * -6.0 2.0 * 4.0 3.0" ),"The string should be: + * -6.0 2.0 * 4.0 3.0");
 			test(test_tree4.getPrefix().equals("+ ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0"),"The string should be: + ^ * - 6.0 + 2.0 3.0 + 3.0 / 8.0 2.0 2.0 3.0 ");
-			test(test_tree5.getPrefix().equals("13.0 "),"The string should be: 13.0");
+			test(test_tree5.getPrefix().equals("13.0"),"The string should be: 13.0");
 
 
 			//test the getPostfix method
