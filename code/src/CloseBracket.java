@@ -1,5 +1,6 @@
-
-
+/**
+ * extend CalcToken represent token of CloseBracket
+ */
 public class CloseBracket extends CalcToken {//the class represents the mathematical operator ( 
 	
 	private char closeBracket; 
