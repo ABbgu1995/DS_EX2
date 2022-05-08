@@ -1,5 +1,3 @@
-import com.sun.source.tree.Tree;
-
 public class ExpressionTree {
     protected TreeNode tree_root;
 

@@ -1,6 +1,3 @@
-import com.sun.jdi.Value;
-
-//
 public class ValueToken extends CalcToken {
     private double val;
     /**
