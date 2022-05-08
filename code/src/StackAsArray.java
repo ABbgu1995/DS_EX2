@@ -47,6 +47,7 @@ public class StackAsArray implements Stack {
 	/**
 	 * Extends the size of the array by CAPACITY_EXTENSION.
 	 */
+	//
 	private void extend() {
 		// Create a new array with the new size
 		Object[] tmpArray = new Object[elements.length + CAPACITY_EXTENSION];
