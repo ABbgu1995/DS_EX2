@@ -45,7 +45,7 @@ public class TreeCalculator {
         if ((node.isLeaf()))
             return recursiveGetInfix(node);
         String infix_expression = recursiveGetInfix(node);
-        return infix_expression.substring(1,infix_expression.length()-1);
+        return infix_expression;
     }
 
     /** calculate the infix format of an expression tree using recursion.
@@ -61,7 +61,7 @@ public class TreeCalculator {
             if (node.isLeaf()) {
                 return str;
             }
-            return "("+ left + " " + str + " " + right + ")";
+            return "( "+ left + " " + str + " " + right + " )";
         }
         return "";
     }
